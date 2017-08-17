@@ -24,6 +24,39 @@ class TaskPage extends BasePage {
     open() {
         super.open();
     }
+
+    addNewTask(text) {
+        this.inputField.waitForVisible();
+        this.inputField.setValue(text).keys("Enter");
+    }
+
+    countActiveTasks() {
+        this.itemCounter.waitForVisible();
+        return Number(this.itemCounter.getText());
+    }
+
+    checkTasksVisibility() {
+        return this.oneItem.isVisible();
+    }
+
+    editTask(text, method='click') {
+        this.oneItem.doubleClick();
+        this.inputEdit.setValue(text);
+        if(method==='click') {
+            this.inputField.click();
+        } else if(method==='Enter') {
+            this.inputEdit.keys("Enter");
+        } else {
+            throw new Error('Method should be "Enter" or "click"');
+        }
+        return this.oneItem.getText(); //task returns text from field
+    }
+
+    undoTask() {
+        this.markUndone.click();
+    }
+
+
 }
 
 module.exports = TaskPage;
