@@ -1,0 +1,21 @@
+{
+  "name": "todomvc_testing",
+  "version": "1.0.0",
+  "description": "test project",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/wdio wdio.conf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "selenium-standalone": "^6.7.0",
+    "wdio-allure-reporter": "^0.1.2",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-selenium-standalone-service": "0.0.9",
+    "webdriverio": "^4.8.0"
+  }
+}
