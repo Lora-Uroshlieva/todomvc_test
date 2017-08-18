@@ -5,8 +5,7 @@ class Page {
     get inputField()            {return $('input.new-todo'); }
     get inputEdit()             {return $('input.edit'); }
     get oneItem()               {return $('section.main li'); }
-    get listItems()             {return browser.elements('section.main li '); }
-    get markDone()              {return $('input[type="checkbox"]'); }
+    get markDone()              {return $('ul.todo-list input.toggle[type="checkbox"]'); }
     get markUndone()            {return $('li.completed input[type="checkbox"]'); }
     get clearCompletedButton()  {return $('button.clear-completed'); }
     get itemCounter()           {return $('footer.footer strong'); }
@@ -48,8 +47,18 @@ class Page {
         return this.oneItem.getText(); //task returns text from field
     }
 
+    completeTask() {
+        this.markDone.click();
+    }
+
     undoTask() {
         this.markUndone.click();
+    }
+
+    deleteTask() {
+        browser.moveToObject('section.main li');
+        this.deleteButton.waitForVisible();
+        this.deleteButton.click();
     }
 }
 
