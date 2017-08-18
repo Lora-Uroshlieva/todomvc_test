@@ -20,7 +20,7 @@ describe('Check process of adding new tasks and editing', function () {
 
 
         //Mark task as done:
-        allTaskPage.completeTask();
+        allTaskPage.completeOneTask();
         expect(allTaskPage.countActiveTasks()).to.equal(0);
 
 
@@ -97,14 +97,21 @@ describe('Check process of adding new tasks and editing', function () {
         allTaskPage.addNewTask('Item 4');
         expect(allTaskPage.countActiveTasks()).to.equal(4);
         allTaskPage.deleteTask();
-        console.log('task quantity: ' + activeTaskPage.countActiveTasks());
         expect(allTaskPage.countActiveTasks()).to.equal(3);
-        console.log('q tasks: ' + allTaskPage.countActiveTasks());
 
         //clear completed items by button !!!!!!!!!!!!!!! this part does not work
-        allTaskPage.oneItem.click();
-        console.log('q tasks: ' + allTaskPage.countActiveTasks());
-        // expect(allTaskPage.countActiveTasks()).to.equal(2);
+        allTaskPage.completeOneTask();
+        expect(allTaskPage.countActiveTasks()).to.equal(2);
+
+
+        //chose all items and click on button to clear all completed items.
+        allTaskPage.markAllTasks();
+        allTaskPage.undoTask();
+        allTaskPage.clearCompletedButton.click();
+        expect(allTaskPage.countActiveTasks()).to.equal(1);
+        // expect(allTaskPage.checkTasksVisibility()).to.equal(false);
+
+
     });
 
 

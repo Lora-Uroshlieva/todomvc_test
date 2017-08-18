@@ -2,15 +2,15 @@
 
 class Page {
 
-    get inputField()            {return $('input.new-todo'); }
-    get inputEdit()             {return $('input.edit'); }
-    get oneItem()               {return $('section.main li'); }
-    get markDone()              {return $('ul.todo-list input.toggle[type="checkbox"]'); }
+    get inputField()            {return $('input.new-todo'); } //field for input
+    get inputEdit()             {return $('input.edit'); }      //allows to edit task after double-clicking on it.
+    get oneItem()               {return $('section.main li'); } //returns one task from list
+    get markDone()              {return $('div.view input.toggle[type="checkbox"]'); }
     get markUndone()            {return $('li.completed input[type="checkbox"]'); }
-    get clearCompletedButton()  {return $('button.clear-completed'); }
-    get itemCounter()           {return $('footer.footer strong'); }
-    get deleteButton ()         {return $('button.destroy'); }
-    get markAll()               {return $('input.toggle-all')}
+    get clearCompletedButton()  {return $('button.clear-completed'); } //link for deleting completed tasks
+    get itemCounter()           {return $('footer.footer strong'); } //quantity of active tasks
+    get deleteButton ()         {return $('button.destroy'); }      //button to delete one task
+    get markAll()               {return $('input.toggle-all')}      //button to mark all items in list
 
     constructor() {
         this.title = "My page";
@@ -47,7 +47,7 @@ class Page {
         return this.oneItem.getText(); //task returns text from field
     }
 
-    completeTask() {
+    completeOneTask() {
         this.markDone.click();
     }
 
