@@ -2,19 +2,17 @@
 
 const Page = require('./Page');
 
-class BasePage extends Page{
+class ActiveTaskPage extends Page {
 
     constructor()           {super(); }
-    open(path)              {super.open(path); }
+    open()                  {super.open('active'); }
     addNewTask(text)        {super.addNewTask(); }
     countActiveTasks()      {super.countActiveTasks(); }
     checkTasksVisibility()  {super.checkTasksVisibility(); }
     editTask()              {super.editTask(); }
     undoTask()              {super.undoTask(); }
 
-    markAllTasks() {
-        this.markAll.click();
-    }
+
 }
 
-module.exports = BasePage;
+module.exports = ActiveTaskPage;

@@ -1,8 +1,8 @@
 "use strict";
 
-const Page = require('./Page');
+const BasePage = require('./BasePage');
 
-class BasePage extends Page{
+class AllTaskPage extends BasePage {
 
     constructor()           {super(); }
     open(path)              {super.open(path); }
@@ -12,9 +12,7 @@ class BasePage extends Page{
     editTask()              {super.editTask(); }
     undoTask()              {super.undoTask(); }
 
-    markAllTasks() {
-        this.markAll.click();
-    }
+
 }
 
-module.exports = BasePage;
+module.exports = AllTaskPage;
