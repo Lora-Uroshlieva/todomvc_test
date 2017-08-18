@@ -5,13 +5,14 @@ const BasePage = require('./BasePage');
 class CompletedTaskPage extends BasePage {
 
     constructor()           {super(); }
-    open()                  {super.open('completed'); }
-    addNewTask(text)        {super.addNewTask(); }
-    countActiveTasks()      {super.countActiveTasks(); }
-    checkTasksVisibility()  {super.checkTasksVisibility(); }
-    editTask()              {super.editTask(); }
-    undoTask()              {super.undoTask(); }
+    open()                  {super.open('#/completed'); }
 
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //this should be moved to BasePage!------------------------------------------
+    markAllTasks() {
+        this.markAll.click();
+    }
 
 }
 

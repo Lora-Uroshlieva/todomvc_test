@@ -18,7 +18,7 @@ class Page {
     }
 
     open(path) {
-        browser.url('/' + path);
+        browser.url('/examples/react/'+ path);
     }
 
     addNewTask(text) {
