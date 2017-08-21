@@ -57,6 +57,7 @@ class Page {
 
     deleteTask() {
         browser.moveToObject('section.main li');
+        this.oneItem.click();
         this.deleteButton.waitForVisible();
         this.deleteButton.click();
     }
