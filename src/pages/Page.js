@@ -42,14 +42,14 @@ class Page {
         return this.oneItem.getText();
     }
 
-    editTask(text, method = 'click') {
+    editTask(text, method='click') {
         this.oneItem.doubleClick();
         this.inputEdit.setValue(text);
 
         if(method === 'click') {
             this.inputField.click();
-        } else if (method === 'tab') {
-            this.inputEdit.keys("tab");
+        } else if (method === 'Tab') {
+            this.inputEdit.keys("Tab");
         } else if(method === 'Enter') {
             this.inputEdit.keys("Enter");
         } else {

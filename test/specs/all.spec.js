@@ -22,11 +22,6 @@ describe('features works with tasks.', function () {
             expect(allTaskPage.checkTaskText()).to.equal('Task 1');
             expect(allTaskPage.checkTasksVisibility()).to.equal(true);
         });
-
-        // it('should not add new task when no text entered', function () {
-        //     allTaskPage.addNewTask('');
-        //     allTaskPage.countActiveTasks().to.equal(1);
-        // });
     });
 
 
@@ -106,46 +101,3 @@ describe('features works with tasks.', function () {
         });
     })
 });
-
-
-// describe('Switch from filter to filters', function () {
-//
-//     it('should move to active tasks page', function () {
-//         allTaskPage.activeFilter.click();
-//         let url = browser.getUrl();
-//         expect(url).to.equal('http://todomvc.com/examples/react/#/active');
-//     });
-//
-//     it('should move to completed tasks page', function () {
-//         allTaskPage.completedFilter.click();
-//         let url = browser.getUrl();
-//         expect(url).to.equal('http://todomvc.com/examples/react/#/completed');
-//     });
-// });
-
-// describe('Additional edit operations', function () {
-//
-//     it('should confirm edit by click outside', function () {
-//         allTaskPage.editTask('Task was edited twice', 'click');
-//         expect(allTaskPage.checkTaskText()).to.equal('Task was edited twice');
-//     });
-//
-//     it('should confirm edit by press Tab', function () {
-//         allTaskPage.editTask('Task was edited 3 times', 'tab');
-//         expect(allTaskPage.checkTaskText()).to.equal('Task was edited 3 times');
-//     });
-//
-//     it('should cancel edit by press escape', function () {
-//         this.oneItem.doubleClick();
-//         this.inputEdit.setValue('Task was edited 4 times');
-//         this.inputEdit.keys("escape");
-//         expect(allTaskPage.checkTaskText()).to.equal('Task was edited 3 times');
-//     });
-//
-//     it('should delete task after editing to empty text', function () {
-//         allTaskPage.editTask('', 'enter');
-//         expect(allTaskPage.checkTasksVisibility()).to.equal(false);
-//     });
-//
-// });
-
