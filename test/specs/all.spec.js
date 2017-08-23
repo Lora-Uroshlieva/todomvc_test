@@ -8,7 +8,6 @@ const allTaskPage = pages.allTaskPage;
 const clearPage = require('./../../src/helpers/clearTasks');
 
 describe('features works with tasks.', function () {
-
     beforeEach(function() {
         allTaskPage.open();
     });
@@ -32,7 +31,6 @@ describe('features works with tasks.', function () {
 
 
     describe('Edit', function () {
-
         before(function () {
             clearPage();
             allTaskPage.addNewTask('Task 1');
