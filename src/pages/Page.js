@@ -11,6 +11,9 @@ class Page {
     get itemCounter()           {return $('footer.footer strong'); } //quantity of active tasks
     get deleteButton ()         {return $('button.destroy'); }      //button to delete one task
     get markAll()               {return $('input.toggle-all')}      //button to mark all items in list
+    get allFilter()             {return $('.filters a[href="#/"]'); }
+    get activeFilter()          {return $('.filters a[href="#/active"]'); }
+    get completedFilter()       {return $('.filters a[href="#/completed"]'); }
 
     constructor() {
         this.title = "My page";
@@ -34,16 +37,25 @@ class Page {
         return this.oneItem.isVisible();
     }
 
-    editTask(text, method='click') {
+    checkTaskText() {
+        console.log(this.oneItem.getText());
+        return this.oneItem.getText();
+    }
+
+    editTask(text, method = 'click') {
         this.oneItem.doubleClick();
         this.inputEdit.setValue(text);
-        if(method==='click') {
+
+        if(method === 'click') {
             this.inputField.click();
-        } else if(method==='Enter') {
+        } else if (method === 'tab') {
+            this.inputEdit.keys("tab");
+        } else if(method === 'Enter') {
             this.inputEdit.keys("Enter");
         } else {
-            throw new Error('Method should be "Enter" or "click"');
+            throw new Error('Method should be "Enter" or "click" or "tab"');
         }
+
         return this.oneItem.getText(); //task returns text from field
     }
 
@@ -59,6 +71,10 @@ class Page {
         browser.moveToObject('section.main li');
         this.deleteButton.waitForVisible();
         this.deleteButton.click();
+    }
+
+    clearCompletedTasks() {
+        this.clearCompletedButton.click();
     }
 }
 

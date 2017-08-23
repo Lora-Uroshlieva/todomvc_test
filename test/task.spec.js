@@ -1,12 +1,12 @@
 "use strict";
 
 const expect = require('chai').expect;
-let PageManager = require('./../../src/pages/PageManager');
+let PageManager = require('./../src/pages/PageManager');
 
 describe('Check process of adding new tasks and editing', function () {
     let pages = new PageManager(),
         allTaskPage = pages.allTaskPage,
-        activeTaskPage = pages.activeTaskpage,
+        activeTaskPage = pages.activeTaskPage,
         completedTaskPage = pages.completedTaskPage;
 
 
@@ -107,10 +107,9 @@ describe('Check process of adding new tasks and editing', function () {
         //chose all items and click on button to clear all completed items.
         allTaskPage.markAllTasks();
         allTaskPage.undoTask();
-        allTaskPage.clearCompletedButton.click();
+        allTaskPage.clearCompletedTasks();
         expect(allTaskPage.countActiveTasks()).to.equal(1);
         // expect(allTaskPage.checkTasksVisibility()).to.equal(false);
-
 
     });
 
