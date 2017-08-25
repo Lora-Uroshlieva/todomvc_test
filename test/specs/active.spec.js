@@ -18,9 +18,9 @@ describe('features works with tasks.', function () {
         });
 
         it('should add new task to list using input field', function () {
-            activeTaskPage.addNewTask('Task 1');
-            expect(activeTaskPage.checkTaskText()).to.equal('Task 1');
-            expect(activeTaskPage.checkTasksVisibility()).to.equal(true);
+            activeTaskPage.header.addNewTask('Task 1');
+            expect(activeTaskPage.tasksList.checkTaskText()).to.equal('Task 1');
+            expect(activeTaskPage.tasksList.checkTasksVisibility()).to.equal(true);
         });
     });
 
@@ -28,12 +28,12 @@ describe('features works with tasks.', function () {
     describe('Edit', function () {
         before(function () {
             clearPage();
-            activeTaskPage.addNewTask('Task 1');
+            activeTaskPage.header.addNewTask('Task 1');
         });
 
         it('should edit task with clicking enter after input', function () {
-            activeTaskPage.editTask('Task was edited', 'Enter');
-            expect(activeTaskPage.checkTaskText()).to.equal('Task was edited');
+            activeTaskPage.tasksList.editTask('Task was edited', 'Enter');
+            expect(activeTaskPage.tasksList.checkTaskText()).to.equal('Task was edited');
         });
     });
 
@@ -41,12 +41,12 @@ describe('features works with tasks.', function () {
     describe('Complete', function () {
         before(function () {
             clearPage();
-            activeTaskPage.addNewTask('Task 1');
+            activeTaskPage.header.addNewTask('Task 1');
         });
 
         it('Should complete task after clicking on checkbox', function () {
-            activeTaskPage.completeOneTask();
-            expect(activeTaskPage.countActiveTasks()).to.equal(0);
+            activeTaskPage.tasksList.completeOneTask();
+            expect(activeTaskPage.footer.countActiveTasks()).to.equal(0);
         });
     });
 
@@ -54,24 +54,24 @@ describe('features works with tasks.', function () {
     describe('Complete all', function () {
         before(function () {
             clearPage();
-            activeTaskPage.addNewTask('Task 1');
+            activeTaskPage.header.addNewTask('Task 1');
         });
 
         it('should complete task after clicking on checkbox', function () {
-            activeTaskPage.markAllTasks();
-            expect(activeTaskPage.countActiveTasks()).to.equal(0);
+            activeTaskPage.header.markAllTasks();
+            expect(activeTaskPage.footer.countActiveTasks()).to.equal(0);
         });
     });
 
     describe('Delete', function () {
         before(function () {
             clearPage();
-            activeTaskPage.addNewTask('Task 1');
+            activeTaskPage.header.addNewTask('Task 1');
         });
 
         it('should delete task by clicking destroy button', function () {
-            activeTaskPage.deleteTask();
-            expect(activeTaskPage.checkTasksVisibility()).to.equal(false);
+            activeTaskPage.tasksList.deleteTask();
+            expect(activeTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
         });
     });
 });

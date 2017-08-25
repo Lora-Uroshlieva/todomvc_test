@@ -12,29 +12,29 @@ describe('Additional edit operations', function () {
     beforeEach(function() {
         allTaskPage.open();
         clearPage();
-        allTaskPage.addNewTask('Task 1');
+        allTaskPage.header.addNewTask('Task 1');
     });
 
     it('should confirm edit by click outside', function () {
-        allTaskPage.editTask('Task was edited twice', 'click');
-        expect(allTaskPage.checkTaskText()).to.equal('Task was edited twice');
+        allTaskPage.tasksList.editTask('Task was edited twice', 'click');
+        expect(allTaskPage.tasksList.checkTaskText()).to.equal('Task was edited twice');
     });
 
     it('should confirm edit by press Tab', function () {
-        allTaskPage.editTask('Task was edited 3 times', 'Tab');
-        expect(allTaskPage.checkTaskText()).to.equal('Task was edited 3 times');
+        allTaskPage.tasksList.editTask('Task was edited 3 times', 'Tab');
+        expect(allTaskPage.tasksList.checkTaskText()).to.equal('Task was edited 3 times');
     });
 
     it('should cancel edit by press escape', function () {
-        allTaskPage.oneItem.doubleClick();
-        allTaskPage.inputEdit.setValue('Task was edited');
-        allTaskPage.inputEdit.keys("Escape");
-        expect(allTaskPage.checkTaskText()).to.equal('Task 1');
+        allTaskPage.tasksList.oneItem.doubleClick();
+        allTaskPage.tasksList.inputEdit.setValue('Task was edited');
+        allTaskPage.tasksList.inputEdit.keys("Escape");
+        expect(allTaskPage.tasksList.checkTaskText()).to.equal('Task 1');
     });
 
     it('should delete task after editing to empty text', function () {
-        allTaskPage.editTask('  ', 'Enter');
-        expect(allTaskPage.checkTasksVisibility()).to.equal(false);
+        allTaskPage.tasksList.editTask('  ', 'Enter');
+        expect(allTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
     });
 });
 
@@ -45,8 +45,8 @@ describe('Add', function () {
     });
 
     it('should not add new task when no text entered', function () {
-        allTaskPage.addNewTask('');
-        expect(allTaskPage.checkTasksVisibility()).to.equal(false);
+        allTaskPage.header.addNewTask('');
+        expect(allTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
     });
 });
 

@@ -16,61 +16,61 @@ describe('features works with tasks.', function () {
     describe('Reopen', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.addNewTask('Task 1');
-            completedTaskPage.allFilter.click();
-            allTaskPage.completeOneTask();
+            completedTaskPage.header.addNewTask('Task 1');
+            completedTaskPage.footer.allFilter.click();
+            allTaskPage.tasksList.completeOneTask();
             completedTaskPage.open();
         });
 
         it('should reopen task after clicking on checkbox', function () {
-            completedTaskPage.undoTask();
-            expect(completedTaskPage.countActiveTasks()).to.equal(1);
+            completedTaskPage.tasksList.undoTask();
+            expect(completedTaskPage.footer.countActiveTasks()).to.equal(1);
         });
     });
 
     describe('Reopen all', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.addNewTask('Task for reopening');
-            completedTaskPage.allFilter.click();
-            allTaskPage.markAllTasks();
+            completedTaskPage.header.addNewTask('Task for reopening');
+            completedTaskPage.footer.allFilter.click();
+            allTaskPage.header.markAllTasks();
             completedTaskPage.open();
         });
 
         it('should reopen all tasks after clicking on button', function () {
-            expect(completedTaskPage.checkTaskText()).to.equal('Task for reopening');
-            completedTaskPage.markAllTasks();
-            expect(completedTaskPage.countActiveTasks()).to.equal(1);
+            expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task for reopening');
+            completedTaskPage.header.markAllTasks();
+            expect(completedTaskPage.footer.countActiveTasks()).to.equal(1);
             pages.allTaskPage.open();
-            expect(completedTaskPage.checkTaskText()).to.equal('Task for reopening');
+            expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task for reopening');
         });
     });
 
     describe('Delete', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.addNewTask('Task 1');
-            completedTaskPage.allFilter.click();
-            allTaskPage.completeOneTask();
+            completedTaskPage.header.addNewTask('Task 1');
+            completedTaskPage.footer.allFilter.click();
+            allTaskPage.tasksList.completeOneTask();
             completedTaskPage.open();
         });
 
         it('should delete task by clicking destroy button', function () {
-            completedTaskPage.deleteTask();
-            expect(completedTaskPage.checkTasksVisibility()).to.equal(false);
+            completedTaskPage.tasksList.deleteTask();
+            expect(completedTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
         });
     });
 
     describe('Clear completed', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.addNewTask('Task 1');
-            completedTaskPage.markAllTasks();
+            completedTaskPage.header.addNewTask('Task 1');
+            completedTaskPage.header.markAllTasks();
         });
 
         it('should delete all completed tasks by pushing button', function () {
-            completedTaskPage.clearCompletedTasks();
-            expect(completedTaskPage.checkTasksVisibility()).to.equal(false);
+            completedTaskPage.tasksList.clearCompletedTasks();
+            expect(completedTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
         });
     })
 });

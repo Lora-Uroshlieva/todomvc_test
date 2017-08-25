@@ -12,6 +12,8 @@ class TasksModule {
     get markDone()          {return $('div.view input.toggle[type="checkbox"]'); }
     get markUndone()        {return $('li.completed input[type="checkbox"]'); }
     get deleteButton ()     {return $('button.destroy'); }      //button to delete one task
+    get inputField()    {return $('input.new-todo'); }
+    get clearCompletedButton()  {return $('button.clear-completed'); }
 
     checkTasksVisibility() {
         return this.oneItem.isVisible();

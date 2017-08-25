@@ -12,23 +12,23 @@ const activePage = pages.activeTaskPage;
 describe('Switching from filter to filter', function () {
     before(function () {
         allTaskPage.open();
-        allTaskPage.addNewTask('task');
+        allTaskPage.header.addNewTask('task');
     });
 
     it('should move to completed tasks page', function () {
-        allTaskPage.completedFilter.click();
+        allTaskPage.footer.completedFilter.click();
         let url = browser.getUrl();
         expect(url).to.equal('http://todomvc.com/examples/react/#/completed');
     });
 
     it('should move to active tasks page', function () {
-        completedTaskPage.activeFilter.click();
+        completedTaskPage.footer.activeFilter.click();
         let url = browser.getUrl();
         expect(url).to.equal('http://todomvc.com/examples/react/#/active');
     });
 
     it('should move to all tasks page', function () {
-        activePage.allFilter.click();
+        activePage.footer.allFilter.click();
         let url = browser.getUrl();
         expect(url).to.equal('http://todomvc.com/examples/react/#/');
     });
