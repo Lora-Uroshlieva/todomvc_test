@@ -44,19 +44,20 @@ class Page {
 
     editTask(text, method='click') {
         this.oneItem.doubleClick();
+        this.inputEdit.waitForEnabled();
+        this.inputEdit.clearElement();
         this.inputEdit.setValue(text);
 
-        if(method === 'click') {
-            this.inputField.click();
-        } else if (method === 'Tab') {
-            this.inputEdit.keys("Tab");
-        } else if(method === 'Enter') {
-            this.inputEdit.keys("Enter");
-        } else {
-            throw new Error('Method should be "Enter" or "click" or "tab"');
+        switch (method) {
+            case 'click':
+                this.inputField.click(); break;
+            case 'Tab':
+                this.inputEdit.keys('Tab'); break;
+            case 'Enter':
+                this.inputEdit.keys('Enter'); break;
+            default:
+                throw new Error('Method should be "Enter" or "click" or "Tab"');
         }
-
-        return this.oneItem.getText(); //task returns text from field
     }
 
     completeOneTask() {

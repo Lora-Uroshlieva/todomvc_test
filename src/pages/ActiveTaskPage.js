@@ -1,17 +1,12 @@
 "use strict";
 
-const Page = require('./Page');
+const BasePage = require('./BasePage');
 
-class ActiveTaskPage extends Page {
+class ActiveTaskPage extends BasePage {
 
     constructor()           {super(); }
     open()                  {super.open('#/active'); }
 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //this should be moved to BasePage!------------------------------------------
-    markAllTasks() {
-        this.markAll.click();
-    }
 }
 
 module.exports = ActiveTaskPage;

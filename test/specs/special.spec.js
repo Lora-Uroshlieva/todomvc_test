@@ -32,13 +32,10 @@ describe('Additional edit operations', function () {
         expect(allTaskPage.checkTaskText()).to.equal('Task 1');
     });
 
-
-    // !!!!! doesn't work!!!!!!!
-    // it('should delete task after editing to empty text', function () {
-    //     allTaskPage.editTask('', 'Enter');
-    //     expect(allTaskPage.checkTasksVisibility()).to.equal(false);
-    // });
-
+    it('should delete task after editing to empty text', function () {
+        allTaskPage.editTask('  ', 'Enter');
+        expect(allTaskPage.checkTasksVisibility()).to.equal(false);
+    });
 });
 
 describe('Add', function () {
