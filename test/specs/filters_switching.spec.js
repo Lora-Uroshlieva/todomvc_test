@@ -15,10 +15,10 @@ describe('Switching from filter to filter', function () {
         allTaskPage.header.addNewTask('task');
     });
 
-    it('should move to completed tasks page', function () {
+    it('should move to isCompleted tasks page', function () {
         allTaskPage.footer.completedFilter.click();
         let url = browser.getUrl();
-        expect(url).to.equal('http://todomvc.com/examples/react/#/completed');
+        expect(url).to.equal('http://todomvc.com/examples/react/#/isCompleted');
     });
 
     it('should move to active tasks page', function () {

@@ -29,7 +29,7 @@ describe('Check process of adding new tasks and editing', function () {
         expect(activeTaskPage.checkTasksVisibility()).to.equal(false);
 
 
-        //Move to page "completed" and check 1 task in list:
+        //Move to page "isCompleted" and check 1 task in list:
         completedTaskPage.open();
         expect(completedTaskPage.checkTasksVisibility()).to.equal(true);
 
@@ -76,7 +76,7 @@ describe('Check process of adding new tasks and editing', function () {
         expect(activeTaskPage.checkTasksVisibility()).to.equal(false);
 
 
-        //move to page "completed", check that completed items are in list.
+        //move to page "isCompleted", check that isCompleted items are in list.
         completedTaskPage.open();
         expect(completedTaskPage.checkTasksVisibility()).to.equal(true);
 
@@ -99,12 +99,12 @@ describe('Check process of adding new tasks and editing', function () {
         allTaskPage.deleteTask();
         expect(allTaskPage.countActiveTasks()).to.equal(3);
 
-        //clear completed items by button !!!!!!!!!!!!!!! this part does not work
+        //clear isCompleted items by button !!!!!!!!!!!!!!! this part does not work
         allTaskPage.completeOneTask();
         expect(allTaskPage.countActiveTasks()).to.equal(2);
 
 
-        //chose all items and click on button to clear all completed items.
+        //chose all items and click on button to clear all isCompleted items.
         allTaskPage.markAllTasks();
         allTaskPage.undoTask();
         allTaskPage.clearCompletedTasks();

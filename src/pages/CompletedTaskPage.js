@@ -15,7 +15,7 @@ class CompletedTaskPage extends Page {
     }
 
     open() {
-        super.open('#/completed');
+        super.open('#/isCompleted');
     }
 }
 

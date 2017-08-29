@@ -61,14 +61,14 @@ describe('features works with tasks.', function () {
         });
     });
 
-    describe('Clear completed', function () {
+    describe('Clear isCompleted', function () {
         beforeEach(function () {
             clearPage();
             completedTaskPage.header.addNewTask('Task 1');
             completedTaskPage.header.markAllTasks();
         });
 
-        it('should delete all completed tasks by pushing button', function () {
+        it('should delete all isCompleted tasks by pushing button', function () {
             completedTaskPage.tasksList.clearCompletedTasks();
             expect(completedTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
         });
