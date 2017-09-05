@@ -6,8 +6,9 @@ class HeaderModule {
         this.locator = locator;
     }
 
-    get inputField()    {return $('input.new-todo'); }
-    get markAll()       {return $('input.toggle-all')}
+    get wrapper()       { return $(this.locator); }
+    get inputField()    { return this.wrapper.$('input.new-todo'); }
+    get markAll()       { return this.wrapper.$('input.toggle-all'); }
 
     addNewTask(text) {
         this.inputField.waitForVisible();

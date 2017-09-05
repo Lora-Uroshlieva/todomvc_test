@@ -10,10 +10,10 @@ class TasksModule {
     get inputEdit()         {return $('input.edit'); }      //allows to edit task after double-clicking on it.
     get oneItem()           {return $('section.main li'); } //returns one task from list
     get markDone()          {return $('div.view input.toggle[type="checkbox"]'); }
-    get markUndone()        {return $('li.isCompleted input[type="checkbox"]'); }
+    get markUndone()        {return $('li.completed input.toggle'); }
     get deleteButton ()     {return $('button.destroy'); }      //button to delete one task
     get inputField()    {return $('input.new-todo'); }
-    get clearCompletedButton()  {return $('button.clear-isCompleted'); }
+    get clearCompletedButton()  {return $('footer.footer button.clear-completed'); }
 
     checkTasksVisibility() {
         return this.oneItem.isVisible();
@@ -24,7 +24,7 @@ class TasksModule {
         return this.oneItem.getText();
     }
 
-    editTask(text, method='click') {
+    editTask(text, method='click') {//TODO should be able to edit specific task, search by task text
         this.oneItem.doubleClick();
         this.inputEdit.waitForEnabled();
         this.inputEdit.clearElement();

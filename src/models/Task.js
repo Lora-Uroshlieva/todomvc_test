@@ -1,7 +1,7 @@
 "use strict";
 
 class Task {
-    constructor(_text='Task1', _isCompleted=false) {
+    constructor(_text, _isCompleted) {
         this.text = _text;
         this.isCompleted = _isCompleted;
         this.id = Task.uuid();
@@ -32,12 +32,7 @@ class Task {
     // }
 
     toString() {
-        browser.localStorage(
-            'POST',
-            {key: 'react-todos',
-                value: '[{"id":"'+ this.id +'","title":"' + this.text +
-                '", "isCompleted":' + this.isCompleted + '}]'});
-        browser.refresh();
+        return '{"id":"'+ this.id +'","title":"' + this.text + '", "completed":' + this.isCompleted + '}';
     }
 
     static uuid(){

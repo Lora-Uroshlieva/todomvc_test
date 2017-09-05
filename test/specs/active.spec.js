@@ -4,10 +4,15 @@ const expect = require('chai').expect;
 const PageManager = require('./../../src/pages/PageManager');
 
 const pages = new PageManager();
-const activeTaskPage = pages.activeTaskPage;
+const activeTaskPage  = pages.activeTaskPage;
 const clearPage = require('./../../src/helpers/clearTasks');
+let preconditionHelper = require('./../../src/helpers/preconditionHelper');
+let Task = require('./../../src/models/Task');
 
 describe('features works with tasks.', function () {
+    let newTask = new Task('Task opened as new #1', false);
+    let completedTask = new Task('Task  opened as completed #2', true);
+
     beforeEach(function() {
         activeTaskPage.open();
     });
@@ -18,8 +23,8 @@ describe('features works with tasks.', function () {
         });
 
         it('should add new task to list using input field', function () {
-            activeTaskPage.header.addNewTask('Task 1');
-            expect(activeTaskPage.tasksList.checkTaskText()).to.equal('Task 1');
+            activeTaskPage.header.addNewTask('Task opened as new #1');
+            expect(activeTaskPage.tasksList.checkTaskText()).to.equal('Task opened as new #1');
             expect(activeTaskPage.tasksList.checkTasksVisibility()).to.equal(true);
         });
     });
@@ -28,7 +33,7 @@ describe('features works with tasks.', function () {
     describe('Edit', function () {
         before(function () {
             clearPage();
-            activeTaskPage.header.addNewTask('Task 1');
+            preconditionHelper.createNewTask(newTask);
         });
 
         it('should edit task with clicking enter after input', function () {
@@ -41,7 +46,7 @@ describe('features works with tasks.', function () {
     describe('Complete', function () {
         before(function () {
             clearPage();
-            activeTaskPage.header.addNewTask('Task 1');
+            preconditionHelper.createNewTask(newTask);
         });
 
         it('Should complete task after clicking on checkbox', function () {
@@ -51,10 +56,10 @@ describe('features works with tasks.', function () {
     });
 
 
-    describe('Complete all', function () {
+    xdescribe('Complete all', function () {
         before(function () {
             clearPage();
-            activeTaskPage.header.addNewTask('Task 1');
+            preconditionHelper.createNewTask(newTask);
         });
 
         it('should complete task after clicking on checkbox', function () {
@@ -66,7 +71,7 @@ describe('features works with tasks.', function () {
     describe('Delete', function () {
         before(function () {
             clearPage();
-            activeTaskPage.header.addNewTask('Task 1');
+            preconditionHelper.createNewTask(newTask);
         });
 
         it('should delete task by clicking destroy button', function () {

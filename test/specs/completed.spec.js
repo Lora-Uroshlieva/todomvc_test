@@ -5,10 +5,15 @@ const PageManager = require('./../../src/pages/PageManager');
 
 const pages = new PageManager();
 const completedTaskPage = pages.completedTaskPage;
-const allTaskPage = pages.allTaskPage;
 const clearPage = require('./../../src/helpers/clearTasks');
+let preconditionHelper = require('./../../src/helpers/preconditionHelper');
+let Task = require('./../../src/models/Task');
+
 
 describe('features works with tasks.', function () {
+    let newTask = new Task('Task opened as new #1', false);
+    let completedTask = new Task('Task opened as completed, №2', true);
+
     beforeEach(function() {
         completedTaskPage.open();
     });
@@ -16,10 +21,7 @@ describe('features works with tasks.', function () {
     describe('Reopen', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.header.addNewTask('Task 1');
-            completedTaskPage.footer.allFilter.click();
-            allTaskPage.tasksList.completeOneTask();
-            completedTaskPage.open();
+            preconditionHelper.createNewTask(completedTask);
         });
 
         it('should reopen task after clicking on checkbox', function () {
@@ -28,31 +30,26 @@ describe('features works with tasks.', function () {
         });
     });
 
-    describe('Reopen all', function () {
+    xdescribe('Reopen all', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.header.addNewTask('Task for reopening');
-            completedTaskPage.footer.allFilter.click();
-            allTaskPage.header.markAllTasks();
-            completedTaskPage.open();
+            preconditionHelper.createNewTask(completedTask);
         });
 
         it('should reopen all tasks after clicking on button', function () {
-            expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task for reopening');
+            // browser.pause(5000);
+            expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task opened as completed, №2');
             completedTaskPage.header.markAllTasks();
             expect(completedTaskPage.footer.countActiveTasks()).to.equal(1);
             pages.allTaskPage.open();
-            expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task for reopening');
+            expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task opened as completed, №2');
         });
     });
 
     describe('Delete', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.header.addNewTask('Task 1');
-            completedTaskPage.footer.allFilter.click();
-            allTaskPage.tasksList.completeOneTask();
-            completedTaskPage.open();
+            preconditionHelper.createNewTask(completedTask);
         });
 
         it('should delete task by clicking destroy button', function () {
@@ -61,14 +58,13 @@ describe('features works with tasks.', function () {
         });
     });
 
-    describe('Clear isCompleted', function () {
+    describe('Clear completed', function () {
         beforeEach(function () {
             clearPage();
-            completedTaskPage.header.addNewTask('Task 1');
-            completedTaskPage.header.markAllTasks();
+            preconditionHelper.createNewTask(completedTask);
         });
 
-        it('should delete all isCompleted tasks by pushing button', function () {
+        it('should delete all completed tasks by pushing button', function () {
             completedTaskPage.tasksList.clearCompletedTasks();
             expect(completedTaskPage.tasksList.checkTasksVisibility()).to.equal(false);
         });

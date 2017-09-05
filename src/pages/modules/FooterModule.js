@@ -8,10 +8,10 @@ class FooterModule {
     }
 
     get itemCounter()           {return $('footer.footer strong'); }
-    get clearCompletedButton()  {return $('button.clear-isCompleted'); }
+    get clearCompletedButton()  {return $('button.clear-completed'); }
     get allFilter()             {return $('.filters a[href="#/"]'); }
     get activeFilter()          {return $('.filters a[href="#/active"]'); }
-    get completedFilter()       {return $('.filters a[href="#/isCompleted"]'); }
+    get completedFilter()       {return $('.filters a[href="#/completed"]'); }
 
     countActiveTasks() {
         this.itemCounter.waitForVisible();

@@ -6,13 +6,18 @@ const PageManager = require('./../../src/pages/PageManager');
 const pages = new PageManager();
 const allTaskPage = pages.allTaskPage;
 const clearPage = require('./../../src/helpers/clearTasks');
-
+let preconditionHelper = require('./../../src/helpers/preconditionHelper');
+let Task = require('./../../src/models/Task');
 
 describe('Additional edit operations', function () {
+    let newTask = new Task('Task opened as new #1', false);
+    // let completedTask = new Task('Task  opened as completed #2', true);
+
     beforeEach(function() {
         allTaskPage.open();
         clearPage();
-        allTaskPage.header.addNewTask('Task 1');
+        preconditionHelper.createNewTask(newTask);
+
     });
 
     it('should confirm edit by click outside', function () {
@@ -29,7 +34,7 @@ describe('Additional edit operations', function () {
         allTaskPage.tasksList.oneItem.doubleClick();
         allTaskPage.tasksList.inputEdit.setValue('Task was edited');
         allTaskPage.tasksList.inputEdit.keys("Escape");
-        expect(allTaskPage.tasksList.checkTaskText()).to.equal('Task 1');
+        expect(allTaskPage.tasksList.checkTaskText()).to.equal('Task opened as new #1');
     });
 
     it('should delete task after editing to empty text', function () {
