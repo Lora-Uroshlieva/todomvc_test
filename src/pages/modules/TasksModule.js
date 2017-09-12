@@ -7,6 +7,8 @@ class TasksModule {
         this.locator = locator;
     }
 
+    get wrapper()           { return $(this.locator); }
+    get markAll()           {return this.wrapper.$('input.toggle-all'); }
     get inputEdit()         {return $('input.edit'); }      //allows to edit task after double-clicking on it.
     get oneItem()           {return $('section.main li'); } //returns one task from list
     get markDone()          {return $('div.view input.toggle[type="checkbox"]'); }
@@ -14,6 +16,11 @@ class TasksModule {
     get deleteButton ()     {return $('button.destroy'); }      //button to delete one task
     get inputField()    {return $('input.new-todo'); }
     get clearCompletedButton()  {return $('footer.footer button.clear-completed'); }
+
+
+    markAllTasks() {
+        this.markAll.click();
+    }
 
     checkTasksVisibility() {
         return this.oneItem.isVisible();

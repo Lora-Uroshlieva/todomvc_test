@@ -56,14 +56,14 @@ describe('features works with tasks.', function () {
     });
 
 
-    xdescribe('Complete all', function () {
+    describe('Complete all', function () {
         before(function () {
             clearPage();
             preconditionHelper.createNewTask(newTask);
         });
 
         it('should complete task after clicking on checkbox', function () {
-            activeTaskPage.header.markAllTasks();
+            activeTaskPage.tasksList.markAllTasks();
             expect(activeTaskPage.footer.countActiveTasks()).to.equal(0);
         });
     });

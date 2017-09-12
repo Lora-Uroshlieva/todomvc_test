@@ -30,7 +30,7 @@ describe('features works with tasks.', function () {
         });
     });
 
-    xdescribe('Reopen all', function () {
+    describe('Reopen all', function () {
         beforeEach(function () {
             clearPage();
             preconditionHelper.createNewTask(completedTask);
@@ -39,7 +39,7 @@ describe('features works with tasks.', function () {
         it('should reopen all tasks after clicking on button', function () {
             // browser.pause(5000);
             expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task opened as completed, №2');
-            completedTaskPage.header.markAllTasks();
+            completedTaskPage.tasksList.markAllTasks();
             expect(completedTaskPage.footer.countActiveTasks()).to.equal(1);
             pages.allTaskPage.open();
             expect(completedTaskPage.tasksList.checkTaskText()).to.equal('Task opened as completed, №2');

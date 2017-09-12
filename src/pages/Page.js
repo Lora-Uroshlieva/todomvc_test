@@ -9,6 +9,11 @@ class Page {
     open(path) {
         browser.url('/examples/react/'+ path);
     }
+
+    isLoaded(elementLocator) {
+        $(elementLocator).waitForVisible();
+        return $(elementLocator).isVisible();
+    }
 }
 
 module.exports = Page;

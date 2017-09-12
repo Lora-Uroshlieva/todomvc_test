@@ -159,7 +159,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     before: function (capabilities, specs) {
-        // browser.windowHandleMaximize();
+        browser.windowHandleMaximize();
     },
     //
     /**

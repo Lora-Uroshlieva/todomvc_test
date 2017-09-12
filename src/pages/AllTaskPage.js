@@ -17,6 +17,7 @@ class AllTaskPage extends Page {
 
     open() {
         super.open('#/');
+        this.isLoaded('.header');
     }
 }
 
