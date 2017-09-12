@@ -7,7 +7,7 @@ const CompletedTaskPage = require('./CompletedTaskPage');
 class PageManager {
     constructor() {
         this.allTaskPage = new AllTaskPage();
-        this.activeTaskpage = new ActiveTaskPage();
+        this.activeTaskPage = new ActiveTaskPage();
         this.completedTaskPage = new CompletedTaskPage();
     }
 }
