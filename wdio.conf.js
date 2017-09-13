@@ -10,7 +10,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/**/*.spec.js'
+        './test/specs/**/special.spec.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -46,6 +46,7 @@ exports.config = {
         //
         browserName: 'chrome'
     }],
+
     //
     // ===================
     // Test Configurations
@@ -158,9 +159,23 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
-    //
+    before: function (capabilities, specs) {
+        "use strict";
+        const chai = require('chai');
+        chai.config.includeStack = true;
+        global.expect = chai.expect;
+        global.AssertionError = chai.AssertionError;
+        global.Assertion = chai.Assertion;
+        global.assert = chai.assert;
+        chai.Should();
+
+        const logger = require('js-logging').colorConsole();
+        logger.setLevel(process.env.log_level);
+        global.logger = logger;
+
+        browser.windowHandleMaximize();
+    },
+
     /**
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details

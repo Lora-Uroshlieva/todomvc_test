@@ -4,13 +4,14 @@
   "description": "test project",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js"
+    "test": "log_level=debug ./node_modules/.bin/wdio wdio.conf.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.1",
+    "js-logging": "^0.1.0",
     "mocha": "^3.5.0",
     "selenium-standalone": "^6.7.0",
     "wdio-allure-reporter": "^0.1.2",

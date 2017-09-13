@@ -1,11 +1,8 @@
 "use strict";
 
-const expect = require('chai').expect;
 const PageManager = require('./../../src/pages/PageManager');
-
 const pages = new PageManager();
 const allTaskPage = pages.allTaskPage;
-const clearPage = require('./../../src/helpers/clearTasks');
 let preconditionHelper = require('./../../src/helpers/preconditionHelper');
 let Task = require('./../../src/models/Task');
 
@@ -19,7 +16,7 @@ describe('features works with tasks.', function () {
 
     describe('Add', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
         });
 
         it('should add new task to list using input field', function () {
@@ -31,7 +28,7 @@ describe('features works with tasks.', function () {
 
     describe('Edit', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -43,7 +40,7 @@ describe('features works with tasks.', function () {
 
     describe('Complete', function () {
         before(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -55,7 +52,7 @@ describe('features works with tasks.', function () {
 
     describe('Complete all', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -68,7 +65,7 @@ describe('features works with tasks.', function () {
 
     describe('Reopen', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(completedTask);
         });
 
@@ -80,7 +77,7 @@ describe('features works with tasks.', function () {
 
     describe('Delete', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -92,7 +89,7 @@ describe('features works with tasks.', function () {
 
     describe('Clear completed', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(completedTask);
         });
 

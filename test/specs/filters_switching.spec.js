@@ -1,13 +1,10 @@
 "use strict";
 
-const expect = require('chai').expect;
 const PageManager = require('./../../src/pages/PageManager');
-
 const pages = new PageManager();
 const allTaskPage = pages.allTaskPage;
 const completedTaskPage = pages.completedTaskPage;
 const activePage = pages.activeTaskPage;
-const clearPage = require('./../../src/helpers/clearTasks');
 let preconditionHelper = require('./../../src/helpers/preconditionHelper');
 let Task = require('./../../src/models/Task');
 

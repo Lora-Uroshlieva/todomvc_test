@@ -1,8 +1,6 @@
 "use strict";
 
-const expect = require('chai').expect;
 const PageManager = require('./../../src/pages/PageManager');
-
 const pages = new PageManager();
 let preconditionHelper = require('./../../src/helpers/preconditionHelper');
 let Task = require('./../../src/models/Task');

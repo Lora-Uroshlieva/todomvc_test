@@ -5,8 +5,8 @@ const PageManager = require('./../../src/pages/PageManager');
 
 const pages = new PageManager();
 const activeTaskPage  = pages.activeTaskPage;
-const clearPage = require('./../../src/helpers/clearTasks');
-let preconditionHelper = require('./../../src/helpers/preconditionHelper');
+const preconditionHelper = require('./../../src/helpers/preconditionHelper');
+
 let Task = require('./../../src/models/Task');
 
 describe('features works with tasks.', function () {
@@ -19,7 +19,7 @@ describe('features works with tasks.', function () {
 
     describe('Add', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
         });
 
         it('should add new task to list using input field', function () {
@@ -32,7 +32,7 @@ describe('features works with tasks.', function () {
 
     describe('Edit', function () {
         before(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -45,7 +45,7 @@ describe('features works with tasks.', function () {
 
     describe('Complete', function () {
         before(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -58,7 +58,7 @@ describe('features works with tasks.', function () {
 
     describe('Complete all', function () {
         before(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 
@@ -70,7 +70,7 @@ describe('features works with tasks.', function () {
 
     describe('Delete', function () {
         before(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(newTask);
         });
 

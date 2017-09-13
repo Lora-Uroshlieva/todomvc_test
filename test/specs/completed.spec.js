@@ -1,12 +1,8 @@
-
 "use strict";
 
-const expect = require('chai').expect;
 const PageManager = require('./../../src/pages/PageManager');
-
 const pages = new PageManager();
 const completedTaskPage = pages.completedTaskPage;
-const clearPage = require('./../../src/helpers/clearTasks');
 let preconditionHelper = require('./../../src/helpers/preconditionHelper');
 let Task = require('./../../src/models/Task');
 
@@ -21,7 +17,7 @@ describe('features works with tasks.', function () {
 
     describe('Reopen', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(completedTask);
         });
 
@@ -33,7 +29,7 @@ describe('features works with tasks.', function () {
 
     describe('Reopen all', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(completedTask);
         });
 
@@ -49,7 +45,7 @@ describe('features works with tasks.', function () {
 
     describe('Delete', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(completedTask);
         });
 
@@ -61,7 +57,7 @@ describe('features works with tasks.', function () {
 
     describe('Clear completed', function () {
         beforeEach(function () {
-            clearPage();
+            preconditionHelper.clearTasks();
             preconditionHelper.createNewTask(completedTask);
         });
 
