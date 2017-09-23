@@ -1,4 +1,4 @@
 .idea
-node_modules/*
 allure-results
 errorShots
+node_modules/
