@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
 const Page = require('./Page');
 
 class CompletedTaskPage extends Page {
 
-    constructor() {
-        super();
-    }
+	constructor() {
+		super();
+	}
 
-    open() {
-        super.open('#/completed');
-    }
+	open() {
+		super.open('#/completed');
+	}
 }
 
 module.exports = CompletedTaskPage;

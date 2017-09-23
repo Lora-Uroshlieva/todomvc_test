@@ -1,0 +1,5 @@
+errorShots/
+allure-results/
+wdio.conf.js
+.gitignore
+package.json

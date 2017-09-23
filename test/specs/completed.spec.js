@@ -1,69 +1,67 @@
-"use strict";
+'use strict';
 
-const PageManager = require('./../../src/pages/PageManager');
-const pages = new PageManager();
-const completedTaskPage = pages.completedTaskPage;
-let preconditionHelper = require('./../../src/helpers/preconditionHelper');
-let Task = require('./../../src/models/Task');
-
+const PageManager = require('./../../src/pages/PageManager'),
+	pages = new PageManager(),
+	completedTaskPage = pages.completedTaskPage,
+	preconditionHelper = require('./../../src/helpers/preconditionHelper'),
+	Task = require('./../../src/models/Task');
 
 describe('features works with tasks.', function () {
-    let newTask = new Task('Task opened as new #1', false);
-    let completedTask = new Task('Task opened as completed, №2', true);
+	const completedTask = new Task('Task opened as completed, №2', true);
 
-    beforeEach(function() {
-        completedTaskPage.open();
-    });
+	beforeEach(function() {
+		completedTaskPage.open();
+	});
 
-    describe('Reopen', function () {
-        beforeEach(function () {
-            preconditionHelper.clearTasks();
-            preconditionHelper.createNewTask(completedTask);
-        });
+	describe('Reopen', function () {
+		beforeEach(function () {
+			preconditionHelper.clearTasks();
+			preconditionHelper.createNewTask(completedTask);
+		});
 
-        it('should reopen task after clicking on checkbox', function () {
-            completedTaskPage.undoTask();
-            expect(completedTaskPage.countActiveTasks()).to.equal(1);
-        });
-    });
+		it('should reopen task after clicking on checkbox', function () {
+			completedTaskPage.undoTask();
+			expect(completedTaskPage.countActiveTasks()).to.equal(1);
+		});
+	});
 
-    describe('Reopen all', function () {
-        beforeEach(function () {
-            preconditionHelper.clearTasks();
-            preconditionHelper.createNewTask(completedTask);
-        });
+	describe('Reopen all', function () {
+		beforeEach(function () {
+			preconditionHelper.clearTasks();
+			preconditionHelper.createNewTask(completedTask);
+		});
 
-        it('should reopen all tasks after clicking on button', function () {
-            // browser.pause(5000);
-            expect(completedTaskPage.checkTaskText()).to.equal('Task opened as completed, №2');
-            completedTaskPage.markAllTasks();
-            expect(completedTaskPage.countActiveTasks()).to.equal(1);
-            pages.allTaskPage.open();
-            expect(completedTaskPage.checkTaskText()).to.equal('Task opened as completed, №2');
-        });
-    });
+		it('should reopen all tasks after clicking on button', function () {
+			// browser.pause(5000);
+			expect(completedTaskPage.checkTaskText()).to.equal('Task opened as completed, №2');
+			completedTaskPage.markAllTasks();
+			expect(completedTaskPage.countActiveTasks()).to.equal(1);
+			pages.allTaskPage.open();
+			expect(completedTaskPage.checkTaskText()).to.equal('Task opened as completed, №2');
+		});
+	});
 
-    describe('Delete', function () {
-        beforeEach(function () {
-            preconditionHelper.clearTasks();
-            preconditionHelper.createNewTask(completedTask);
-        });
+	describe('Delete', function () {
+		beforeEach(function () {
+			preconditionHelper.clearTasks();
+			preconditionHelper.createNewTask(completedTask);
+		});
 
-        it('should delete task by clicking destroy button', function () {
-            completedTaskPage.deleteTask();
-            expect(completedTaskPage.checkTasksVisibility()).to.equal(false);
-        });
-    });
+		it('should delete task by clicking destroy button', function () {
+			completedTaskPage.deleteTask();
+			expect(completedTaskPage.checkTasksVisibility()).to.equal(false);
+		});
+	});
 
-    describe('Clear completed', function () {
-        beforeEach(function () {
-            preconditionHelper.clearTasks();
-            preconditionHelper.createNewTask(completedTask);
-        });
+	describe('Clear completed', function () {
+		beforeEach(function () {
+			preconditionHelper.clearTasks();
+			preconditionHelper.createNewTask(completedTask);
+		});
 
-        it('should delete all completed tasks by pushing button', function () {
-            completedTaskPage.clearCompletedTasks();
-            expect(completedTaskPage.checkTasksVisibility()).to.equal(false);
-        });
-    })
+		it('should delete all completed tasks by pushing button', function () {
+			completedTaskPage.clearCompletedTasks();
+			expect(completedTaskPage.checkTasksVisibility()).to.equal(false);
+		});
+	});
 });
